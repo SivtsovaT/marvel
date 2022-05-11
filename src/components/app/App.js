@@ -5,6 +5,7 @@ import RandomChar from "../randomChar/randomChar";
 import CharList from "../charList/charList";
 import CharInfo from "../charInfo/charInfo";
 import AppBanner from "../appBanner/appBanner";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 class App  extends Component {
     state = {
@@ -26,7 +27,10 @@ class App  extends Component {
                     <RandomChar/>
                     <div className="char__content">
                         <CharList onCharSelected={this.onCharSelected}/>
-                        <CharInfo charId={this.state.selectedChar}/>
+                        <ErrorBoundary>
+                            <CharInfo charId={this.state.selectedChar}/>
+                        </ErrorBoundary>
+
                     </div>
                     <img className="bg-decoration" src={decoration} alt="vision"/>
                 </main>
